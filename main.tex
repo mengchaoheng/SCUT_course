@@ -10,9 +10,7 @@
 \RequirePackage{amssymb} %this package conflicts with xeCJK, place it before xeCJK to avoid the coflict.
 \RequirePackage[final]{pdfpages}
 \RequirePackage{color}
-\usepackage{lmodern}
 %\RequirePackage{prettyref} %不需要
-
 
 %%%%
 % 页面设置
@@ -82,7 +80,9 @@ footskip=1.5cm %页脚所占高度
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 表格
 \usepackage{diagbox}
-
+% 超链接
+\usepackage{hyperref}
+\hypersetup{hidelinks}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%毕业论文版
 %% 图表环境
@@ -105,15 +105,16 @@ footskip=1.5cm %页脚所占高度
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \DeclareCaptionFont{capFont}{\ftcaptionfont} % 表格名及图名
 \DeclareCaptionLabelSeparator{twospace}{~~}
-\captionsetup{ labelsep=space,% 去掉图标签后的冒号 % 原模板labelsep=twospace，而论文撰写规范要求是space
-  belowskip=0bp,aboveskip=0bp,
-  font={capFont}, figurename=图,tablename=表,listfigurename=插图目录,listtablename=表格目录}
+%英文图表
+\captionsetup[figure]{name={Fig.},labelsep=period, belowskip=0bp,aboveskip=0bp, font={capFont}}
+\captionsetup[table]{name={Tab.},labelsep=period, belowskip=0bp,aboveskip=0bp, font={capFont}}
+%中文图标
+% \captionsetup{ labelsep=space,% 去掉图标签后的冒号 % 原模板labelsep=twospace，而论文撰写规范要求是space
+%   belowskip=0bp,aboveskip=0bp,
+%   font={capFont}, figurename=图,tablename=表,listfigurename=插图目录,listtablename=表格目录}
 \captionsetup[figure]{position=bottom}
-\captionsetup[subfloat]{captionskip=6bp,nearskip=0bp,farskip=0bp,topadjust=0bp, justification=centering,labelformat=brace,labelsep=space,subrefformat=subparens,listofformat=parens}%要使分图题和图题一样字号，选项加上 font={capFont}
-
-% 超链接
-\usepackage[hidelinks]{hyperref}
-%\hypersetup{}
+\captionsetup[subfloat]{captionskip=6bp,nearskip=0bp,farskip=0bp,topadjust=0bp,
+  justification=centering,labelformat=brace,labelsep=space}%要使分图题和图题一样字号，选项加上 font={capFont}  %删除 ,subrefformat=subparens,listofformat=parens % 修改引用
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%毕业论文版
 
 % 公式和正文的间距由4pt改为10pt，更美观
@@ -246,8 +247,8 @@ footskip=1.5cm %页脚所占高度
 \titlespacing{\subsubsection}{0cm}{*1}{*1}
 
 
-\title{\vspace{-1.5cm} \bf\xiaoerhao 基于xxxx的无人机控制}
-\author{\bf\sihao 作者姓名}
+\title{\vspace{-1.5cm} \bf\xiaoerhao INDI-based Angular Velocity Control for a Ducted Fan UAV with Redundant Actuators}
+\author{\bf\sihao Name}
 \date{}
 \setlength{\parindent}{0pt} % 首行不缩进
 \linespread{2.17}
@@ -264,8 +265,8 @@ footskip=1.5cm %页脚所占高度
 \fancyhead[RO]{}
 \fancyhead[LE]{}
 \fancyhead[LO]{}
-\fancyhead[CO]{\wuhao{华南理工大学博士课程论文}}
-\fancyhead[CE]{\wuhao{基于xxx的无人机控制}}% 
+\fancyhead[CO]{\wuhao{South China University of Technology}}
+\fancyhead[CE]{\wuhao{INDI-based Angular Velocity Control for a Ducted Fan UAV with Redundant Actuators}}% 
 \renewcommand{\headrulewidth}{1.5pt}
 \renewcommand{\footrulewidth}{0pt}
 
@@ -291,7 +292,7 @@ footskip=1.5cm %页脚所占高度
 	% 正文
 	\input{body}
 
-%	\renewcommand*{\bibfont}{\small}
-	\printbibliography[title={参考文献}]	% 参考文献著录
-  \includepdf[pages={5}]{cover.pdf} %硕士/英文论文注释掉这一行
+	\renewcommand*{\bibfont}{\wuhao}
+	\printbibliography[title={References}]	% 参考文献著录 
+
 \end{document}
